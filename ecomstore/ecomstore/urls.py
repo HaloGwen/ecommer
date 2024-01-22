@@ -25,10 +25,14 @@ from django.contrib.staticfiles.views import serve
 from . import settings
 from django.conf.urls.static import static
 
+from django.contrib import admin 
+admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'catalog/$',home),
+    # path(r'^catalog/$',home),
+    path('catalog/', home, name='catalog'),
+
 ]
 
 if settings.DEBUG:
