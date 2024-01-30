@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     # "django.contrib.sites",
     "catalog",
     "preview",
-    "utils",
-    "cart",
+    "utilss",
+    "carts",
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.static',
+                'utilss.context_processors.ecomstore',
             ],
         },
     },
@@ -80,12 +85,12 @@ WSGI_APPLICATION = 'ecomstore.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-     "default": {
+    "default": {
 
         "ENGINE": "django.db.backends.mysql",
         "NAME": "ecomstore",
-        "USER": "username",
-        "PASSWORD": "password",
+        "USER": "root",
+        "PASSWORD": "admin",
         "HOST": "localhost",
         "PORT": 3306,
     },
@@ -137,3 +142,18 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_NAME = "Modern Musician"
+META_KEYWORDS = "Music, instruments, music accessories, musician supplies"
+META_DESCRIPTION = "Modern Musician is an online supplier of instruments, sheet music, and other accessories for musicians"
+
+# Cookie name. This can be whatever you want. 
+SESSION_COOKIE_NAME = 'sessionid' 
+# The module to store sessions data. 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db' 
+# Age of cookie, in seconds (default: 2 weeks). 
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 * 2 
+# Whether a user's session cookie expires when the Web browser is closed 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False 
+# Whether the session cookie should be secure (https:// only). 
+SESSION_COOKIE_SECURE = False 

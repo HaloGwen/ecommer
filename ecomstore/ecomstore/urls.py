@@ -15,25 +15,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,re_path
-from preview.views import home
+from django.urls import path
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
-from django.contrib.staticfiles.views import serve
-
 from . import settings
 from django.conf.urls.static import static
+
 
 from django.contrib import admin 
 admin.autodiscover()
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # path(r'^catalog/$',home),
-    path('catalog/', home, name='catalog'),
-
+    path("admin/", admin.site.urls),
+    # path('catalog/', home, name='catalog'),
+    path("", include("catalog.urls")),
+    path("catalog/", include("catalog.urls")),
+    path("preview/", include("preview.urls")),
+    path("carts/", include("carts.urls")),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(

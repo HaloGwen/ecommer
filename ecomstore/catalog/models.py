@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(
@@ -30,16 +31,17 @@ class Category(models.Model):
         auto_now=True,
     )
 
-class Meta: 
-    db_table = 'categories' 
-    ordering = ['-created_at'] 
-    verbose_name_plural = 'Categories' 
-    
-def __unicode__(self): 
-    return self.name
+    class Meta:
+        db_table = "categories"
+        ordering = ["-created_at"]
+        verbose_name_plural = "Categories"
 
-def get_absolute_url(self): 
-    return reverse("catalog_category", args=(self.slug,))
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("catalog_category", args=(self.slug,))
+        # return "/catalog/category/%s/" % self.slug
 
 
 class Product(models.Model):
